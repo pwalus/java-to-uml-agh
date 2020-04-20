@@ -1,0 +1,9 @@
+public class ClassWithGenerics {
+  List<String> method(){}
+
+  Set<Integer> method(){}
+
+  Set<?> method(){}
+
+  Map<String,Integer> method(){}
+}

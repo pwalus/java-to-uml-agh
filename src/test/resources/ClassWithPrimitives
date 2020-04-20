@@ -1,0 +1,19 @@
+public class ClassWithPrimitives {
+  void method(){}
+
+  boolean method(){}
+
+  byte method(){}
+
+  short method(){}
+
+  int method(){}
+
+  long method(){}
+
+  char method(){}
+
+  float method(){}
+
+  double method(){}
+}

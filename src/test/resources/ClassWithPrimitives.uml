@@ -1,0 +1,13 @@
+@startuml
+class ClassWithPrimitives{
+{method} ~method(): void
+{method} ~method(): boolean
+{method} ~method(): byte
+{method} ~method(): short
+{method} ~method(): int
+{method} ~method(): long
+{method} ~method(): char
+{method} ~method(): float
+{method} ~method(): double
+}
+@enduml

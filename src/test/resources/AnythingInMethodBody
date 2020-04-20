@@ -1,0 +1,16 @@
+public class AnythingInMethodBody {
+
+  public String method1(){
+    int x = 12;
+    x = 32;
+    if(x == 2){
+       return 12;
+    }
+
+    return 13;
+  }
+
+  static void method2(){
+    return;
+  }
+}

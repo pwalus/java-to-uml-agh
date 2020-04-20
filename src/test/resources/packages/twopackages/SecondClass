@@ -1,0 +1,5 @@
+package translator.utility;
+
+public class SecondClass {
+  void method1(){}
+}

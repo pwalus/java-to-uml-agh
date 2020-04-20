@@ -1,0 +1,15 @@
+public class ClassWithMethodParameters {
+  void method(int argument){}
+
+  void method(String argument){}
+
+  void method(String argument){}
+
+  void method(List<String> arguments){}
+
+  void method(Map<String, Integer> arguments){}
+
+  void method(int argument1, String argument2){}
+
+  void method(int argument1, String argument2, List<String> argument3){}
+}

@@ -1,0 +1,9 @@
+@startuml
+class ClassWithArrays{
+{method} ~method(): String[]
+{method} ~method(): String[][]
+{method} ~method(): int[]
+{method} ~method(): int[][]
+{method} ~method(): Class<?>[]
+}
+@enduml

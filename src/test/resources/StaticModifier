@@ -1,0 +1,6 @@
+public class StaticModifier {
+
+  public static String method1(){}
+
+  static void method2(){}
+}

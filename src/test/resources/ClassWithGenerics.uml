@@ -1,0 +1,8 @@
+@startuml
+class ClassWithGenerics{
+{method} ~method(): List<String>
+{method} ~method(): Set<Integer>
+{method} ~method(): Set<?>
+{method} ~method(): Map<String,Integer>
+}
+@enduml

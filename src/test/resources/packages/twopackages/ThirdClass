@@ -1,0 +1,5 @@
+package translator.utility;
+
+public class ThirdClass {
+  void method1(){}
+}

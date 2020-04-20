@@ -1,0 +1,6 @@
+@startuml
+class StaticModifier{
+{method}{static} +method1(): String
+{method}{static} ~method2(): void
+}
+@enduml

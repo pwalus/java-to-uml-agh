@@ -1,0 +1,8 @@
+@startuml
+class ClassWithMethods{
+{method} ~method1(): void
+{method} +method2(): void
+{method} #method3(): void
+{method} -method4(): void
+}
+@enduml

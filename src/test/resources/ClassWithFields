@@ -1,0 +1,13 @@
+public class ClassWithFields {
+  int argument;
+
+  public String argument;
+
+  protected List<String> arguments;
+
+  private List<String> arguments;
+
+  private Map<String, Integer> arguments;
+
+  private static Map<String, Integer> arguments;
+}

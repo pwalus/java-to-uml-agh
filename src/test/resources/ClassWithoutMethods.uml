@@ -1,0 +1,10 @@
+@startuml
+class ClassWithoutMethods{
+}
+class PublicClassWithoutMethods{
+}
+class ProtectedClassWithoutMethods{
+}
+class PrivateClassWithoutMethods{
+}
+@enduml

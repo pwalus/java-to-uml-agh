@@ -1,0 +1,11 @@
+public class ClassWithArrays {
+  String[] method(){}
+
+  String[][] method(){}
+
+  int[] method(){}
+
+  int[][] method(){}
+
+  Class<?>[] method(){}
+}

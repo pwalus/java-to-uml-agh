@@ -1,0 +1,7 @@
+class ClassWithoutMethods {}
+
+public class PublicClassWithoutMethods {}
+
+protected class ProtectedClassWithoutMethods {}
+
+private class PrivateClassWithoutMethods {}

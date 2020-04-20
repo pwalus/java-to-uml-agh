@@ -1,0 +1,8 @@
+package translator.utility.test;
+
+import translator.utility.test.FourthClass;
+import java.util.Map;
+
+public class ThirdClass<K, V> extends FourthClass<K, V>{
+  Map<K, V> method2(){}
+}

@@ -1,0 +1,10 @@
+@startuml
+class ClassWithReferencesTypes{
+{method} ~method(): String
+{method} ~method(): Integer
+{method} ~method(): Number
+{method} ~method(): Char
+{method} ~method(): CustomType
+{method} ~method(): CustomInterface
+}
+@enduml

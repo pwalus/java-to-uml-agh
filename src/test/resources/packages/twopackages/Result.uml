@@ -1,0 +1,15 @@
+@startuml
+package translator{
+abstract class translator.FirstClass{
+{method} ~method1(): void
+}
+}
+package translator.utility{
+class translator.utility.SecondClass{
+{method} ~method1(): void
+}
+class translator.utility.ThirdClass{
+{method} ~method1(): void
+}
+}
+@enduml

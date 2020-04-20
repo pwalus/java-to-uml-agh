@@ -1,0 +1,6 @@
+@startuml
+abstract class AbstractModifier{
+{method} ~method1(): void
+{method}{abstract} #method2(): void
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class ClassWithFields{
+{field} ~argument: int
+{field} +argument: String
+{field} #arguments: List<String>
+{field} -arguments: List<String>
+{field} -arguments: Map<String,Integer>
+{field} -arguments: Map<String,Integer>
+}
+@enduml

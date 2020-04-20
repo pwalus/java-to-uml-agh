@@ -1,0 +1,13 @@
+public class ClassWithReferencesTypes {
+  String method(){}
+
+  Integer method(){}
+
+  Number method(){}
+
+  Char method(){}
+
+  CustomType method(){}
+
+  CustomInterface method(){}
+}

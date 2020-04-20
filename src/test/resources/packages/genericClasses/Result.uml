@@ -1,0 +1,24 @@
+@startuml
+package translator{
+class translator.FirstClass<T>{
+{method} ~method1(): T
+}
+}
+package translator.utility{
+abstract class translator.utility.SecondClass<T>{
+{method} ~method1(): T
+}
+}
+package translator.utility.test{
+class translator.utility.test.ThirdClass<K,V>{
+{method} ~method2(): Map<K,V>
+}
+class translator.utility.test.FourthClass<K,V>{
+{method} ~method2(): Map<K,V>
+}
+}
+translator.utility.test.FourthClass -- translator.FirstClass
+translator.utility.test.ThirdClass -- translator.utility.SecondClass
+translator.utility.SecondClass <|-- translator.FirstClass
+translator.utility.test.FourthClass <|-- translator.utility.test.ThirdClass
+@enduml
