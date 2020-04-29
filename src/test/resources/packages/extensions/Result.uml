@@ -1,0 +1,23 @@
+@startuml
+package translator{
+class translator.FirstClass{
+{method} ~method1(): String
+}
+}
+package translator.utility{
+abstract class translator.utility.SecondClass{
+{method} ~method1(): String
+}
+}
+package translator.utility.test{
+abstract class translator.utility.test.ThirdClass{
+{method} ~method2(): String
+}
+class translator.utility.test.FourthClass{
+{method} ~method2(): String
+}
+}
+translator.utility.test.FourthClass -- translator.FirstClass
+translator.utility.SecondClass <|-- translator.FirstClass
+translator.utility.test.ThirdClass <|-- translator.utility.SecondClass
+@enduml

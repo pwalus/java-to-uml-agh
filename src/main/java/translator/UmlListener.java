@@ -7,14 +7,18 @@ import static translator.UmlListenerHelper.isStatic;
 
 import grammar.JavaGrammarBaseListener;
 import grammar.JavaGrammarParser.ClassDeclarationContext;
+import grammar.JavaGrammarParser.ClassOrInterfaceTypeContext;
 import grammar.JavaGrammarParser.FieldDeclarationContext;
 import grammar.JavaGrammarParser.FieldHeaderContext;
+import grammar.JavaGrammarParser.InterfaceDeclarationContext;
+import grammar.JavaGrammarParser.InterfaceMethodDeclarationContext;
 import grammar.JavaGrammarParser.MethodDeclarationContext;
 import grammar.JavaGrammarParser.MethodHeaderContext;
 import grammar.JavaGrammarParser.MethodModifierContext;
 import grammar.JavaGrammarParser.PackageDeclarationContext;
 import grammar.JavaGrammarParser.SingleTypeImportDeclarationContext;
 import grammar.JavaGrammarParser.SuperClassContext;
+import grammar.JavaGrammarParser.SuperInterfacesContext;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -56,9 +60,9 @@ public class UmlListener extends JavaGrammarBaseListener {
         }
 
         int firstDot = ctx.packageName().getText().indexOf(".");
-        if (firstDot > 0) {
+        if(firstDot > 0){
             actualRootPackage = ctx.packageName().getText().substring(0, firstDot);
-        } else {
+        }else{
             actualRootPackage = ctx.packageName().getText();
         }
         actualPackage = ctx.packageName().getText();
@@ -111,6 +115,28 @@ public class UmlListener extends JavaGrammarBaseListener {
         }
     }
 
+    @Override
+    public void enterSuperInterfaces(SuperInterfacesContext ctx) {
+        ClassDeclarationContext classDeclarationContext = (ClassDeclarationContext) ctx.getParent();
+        String currentClassName = getFullClassName(classDeclarationContext);
+
+        for (ClassOrInterfaceTypeContext interfaceClass : ctx.interfaceTypeList()
+            .classOrInterfaceType()) {
+            Optional<String> optionalImport = imports.stream()
+                .filter(rel -> rel.contains(interfaceClass.Identifier().getText()))
+                .findAny();
+
+            if (optionalImport.isPresent()) {
+                classImplements.putIfAbsent(currentClassName, new LinkedHashSet<>());
+                classImplements.computeIfPresent(currentClassName, (s, strings) -> {
+                    strings.add(optionalImport.get());
+                    return strings;
+                });
+                imports.remove(optionalImport.get());
+            }
+        }
+    }
+
     private String getFullClassName(ClassDeclarationContext ctx) {
         if (actualPackage.isEmpty()) {
             return ctx.Identifier().getText();
@@ -118,6 +144,35 @@ public class UmlListener extends JavaGrammarBaseListener {
         return actualPackage + "." + ctx.Identifier().getText();
     }
 
+    @Override
+    public void enterInterfaceDeclaration(InterfaceDeclarationContext ctx) {
+        content.add("interface " + getFullClassName(ctx) + getTypeArguments(ctx) + "{");
+        content.add("\n");
+    }
+
+    private String getTypeArguments(InterfaceDeclarationContext ctx) {
+        if (ctx.typeArguments() == null) {
+            return "";
+        }
+
+        return ctx.typeArguments().getText();
+    }
+
+    private String getFullClassName(InterfaceDeclarationContext ctx) {
+        if (actualPackage.isEmpty()) {
+            return ctx.Identifier().getText();
+        }
+        return actualPackage + "." + ctx.Identifier().getText();
+    }
+
+    @Override
+    public void exitInterfaceDeclaration(InterfaceDeclarationContext ctx) {
+        content.add("}");
+        content.add("\n");
+
+        relations.put(getFullClassName(ctx), new LinkedHashSet<>(imports));
+        imports = new LinkedHashSet<>();
+    }
 
     @Override
     public void enterMethodDeclaration(MethodDeclarationContext ctx) {
@@ -150,6 +205,12 @@ public class UmlListener extends JavaGrammarBaseListener {
         content.add(": ");
         content.add(ctx.unannType().getText());
         content.add("\n");
+    }
+
+    @Override
+    public void enterInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
+        content.add("{method} ");
+        content.add(getUmlModifier(ctx.interfaceMethodModifier()));
     }
 
     public String umlClass() {
@@ -196,7 +257,7 @@ public class UmlListener extends JavaGrammarBaseListener {
     private String getImplementations() {
         String implemenetationsString = "";
         for (Entry<String, Set<String>> entry : classImplements.entrySet()) {
-            for (String interfaceClass : entry.getValue()) {
+            for(String interfaceClass : entry.getValue()){
                 implemenetationsString += interfaceClass + " .. " + entry.getKey() + "\n";
             }
         }
@@ -213,3 +274,4 @@ public class UmlListener extends JavaGrammarBaseListener {
         return packagesEnd;
     }
 }
+

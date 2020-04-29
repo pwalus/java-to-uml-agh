@@ -1,0 +1,8 @@
+package translator;
+
+import translator.utility.SecondClassInterface;
+import java.util.List;
+
+public class FirstClass implements SecondClassInterface{
+  String method1(){}
+}

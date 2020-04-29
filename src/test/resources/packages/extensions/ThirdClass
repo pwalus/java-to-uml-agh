@@ -1,0 +1,5 @@
+package translator.utility.test;
+
+public abstract class ThirdClass {
+  String method2(){}
+}

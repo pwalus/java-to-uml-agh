@@ -1,0 +1,11 @@
+@startuml
+interface InterfaceWithMethodParameters{
+{method} ~method(int argument): void
+{method} ~method(String argument): void
+{method} ~method(String argument): void
+{method} ~method(List<String> arguments): void
+{method} ~method(Map<String,Integer> arguments): void
+{method} ~method(int argument1, String argument2): void
+{method} ~method(int argument1, String argument2, List<String> argument3): void
+}
+@enduml

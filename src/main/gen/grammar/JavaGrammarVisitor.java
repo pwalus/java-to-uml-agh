@@ -1,4 +1,4 @@
-// Generated from /Users/patrykwalus/IdeaProjects/semestr8/kompil/java-to-uml/src/main/java/grammar/JavaGrammar.g4 by ANTLR 4.8
+// Generated from /Users/konradmikucki/projects/java-to-uml-agh/src/main/java/grammar/JavaGrammar.g4 by ANTLR 4.8
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -167,6 +167,18 @@ public interface JavaGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSuperClass(JavaGrammarParser.SuperClassContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#superInterfaces}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSuperInterfaces(JavaGrammarParser.SuperInterfacesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceTypeList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceTypeList(JavaGrammarParser.InterfaceTypeListContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JavaGrammarParser#classModifier}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -214,6 +226,42 @@ public interface JavaGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFieldDeclaratorId(JavaGrammarParser.FieldDeclaratorIdContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceDeclaration(JavaGrammarParser.InterfaceDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceModifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceModifier(JavaGrammarParser.InterfaceModifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceBody(JavaGrammarParser.InterfaceBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceMemberDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceMemberDeclaration(JavaGrammarParser.InterfaceMemberDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceMethodDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceMethodDeclaration(JavaGrammarParser.InterfaceMethodDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaGrammarParser#interfaceMethodModifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceMethodModifier(JavaGrammarParser.InterfaceMethodModifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JavaGrammarParser#methodDeclaration}.
 	 * @param ctx the parse tree

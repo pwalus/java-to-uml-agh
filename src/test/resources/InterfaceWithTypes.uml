@@ -1,0 +1,23 @@
+@startuml
+class InterfaceWithTypes{
+{method} ~method(): void
+{method} ~method(): boolean
+{method} ~method(): byte
+{method} ~method(): short
+{method} ~method(): int
+{method} ~method(): long
+{method} ~method(): char
+{method} ~method(): float
+{method} ~method(): double
+{method} ~method(): String
+{method} ~method(): Integer
+{method} ~method(): Number
+{method} ~method(): Char
+{method} ~method(): CustomType
+{method} ~method(): CustomInterface
+{method} ~method(): List<String>
+{method} ~method(): Set<Integer>
+{method} ~method(): Set<?>
+{method} ~method(): Map<String,Integer>
+}
+@enduml

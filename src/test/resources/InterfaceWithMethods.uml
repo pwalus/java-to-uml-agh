@@ -1,0 +1,6 @@
+@startuml
+interface InterfaceWithMethods{
+{method} ~method1(): void
+{method} +method2(): void
+}
+@enduml

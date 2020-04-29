@@ -1,0 +1,7 @@
+package translator.utility.test;
+
+import java.util.Map;
+
+public interface FourthClassInterface<K, V> {
+  Map<K, V> method2();
+}

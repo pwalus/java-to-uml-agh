@@ -1,0 +1,13 @@
+@startuml
+package translator{
+abstract class translator.FirstClass{
+{method} ~method1(): SecondClass
+}
+}
+package translator.utility{
+class translator.utility.SecondClass{
+{method} ~method1(): void
+}
+}
+translator.utility.SecondClass -- translator.FirstClass
+@enduml

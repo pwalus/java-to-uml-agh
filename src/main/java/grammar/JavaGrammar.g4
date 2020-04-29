@@ -55,6 +55,7 @@ singleStaticImportDeclaration
 
 typeDeclaration
  : classDeclaration
+ | interfaceDeclaration
  ;
 
 primitiveType
@@ -134,11 +135,19 @@ wildcard
  * https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html
  */
 classDeclaration
-  : classModifier* 'class' Identifier typeArguments? superClass? classBody
+  : classModifier* 'class' Identifier typeArguments? superClass? superInterfaces? classBody
   ;
 
 superClass
  : 'extends' classOrInterfaceType
+ ;
+
+superInterfaces
+ : 'implements' interfaceTypeList
+ ;
+
+interfaceTypeList
+ : classOrInterfaceType (',' classOrInterfaceType)*
  ;
 
 classModifier
@@ -182,6 +191,41 @@ fieldHeader
 fieldDeclaratorId
   : Identifier
   ;
+
+/*
+ * From §9 (Interfaces)
+ * https://docs.oracle.com/javase/specs/jls/se8/html/jls-9.html
+ */
+interfaceDeclaration
+  : interfaceModifier* 'interface' Identifier typeArguments? interfaceBody
+  ;
+
+interfaceModifier
+  : 'public'
+  | 'abstract'
+  | 'static'
+  ;
+
+interfaceBody
+  : '{}'
+  | '{' (WS|NEWLINE).*? '}'
+  | '{' interfaceMemberDeclaration* '}'
+  ;
+
+interfaceMemberDeclaration
+  : (WS|NEWLINE).*?
+  | interfaceMethodDeclaration
+  ;
+
+interfaceMethodDeclaration
+  : interfaceMethodModifier* methodHeader methodBody
+  ;
+
+interfaceMethodModifier
+ : 'public'
+ | 'abstract'
+ | 'static'
+ ;
 
 /*
  * From §8.4 (Method Declarations)

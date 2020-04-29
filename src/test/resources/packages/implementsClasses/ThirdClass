@@ -1,0 +1,10 @@
+package translator.utility.test;
+
+import translator.utility.test.FourthClassInterface;
+import translator.utility.SecondClassInterface;
+import java.util.Map;
+
+public class ThirdClass<K, V> implements SecondClassInterface, FourthClassInterface<K, V>{
+  String method1(){}
+  Map<K, V> method2(){}
+}

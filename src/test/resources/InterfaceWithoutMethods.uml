@@ -1,0 +1,6 @@
+@startuml
+interface InterfaceWithoutMethods{
+}
+interface PublicInterfaceWithoutMethods{
+}
+@enduml

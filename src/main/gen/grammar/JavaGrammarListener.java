@@ -1,4 +1,4 @@
-// Generated from /Users/patrykwalus/IdeaProjects/semestr8/kompil/java-to-uml/src/main/java/grammar/JavaGrammar.g4 by ANTLR 4.8
+// Generated from /Users/konradmikucki/projects/java-to-uml-agh/src/main/java/grammar/JavaGrammar.g4 by ANTLR 4.8
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -268,6 +268,26 @@ public interface JavaGrammarListener extends ParseTreeListener {
 	 */
 	void exitSuperClass(JavaGrammarParser.SuperClassContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#superInterfaces}.
+	 * @param ctx the parse tree
+	 */
+	void enterSuperInterfaces(JavaGrammarParser.SuperInterfacesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#superInterfaces}.
+	 * @param ctx the parse tree
+	 */
+	void exitSuperInterfaces(JavaGrammarParser.SuperInterfacesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceTypeList}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceTypeList(JavaGrammarParser.InterfaceTypeListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceTypeList}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceTypeList(JavaGrammarParser.InterfaceTypeListContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaGrammarParser#classModifier}.
 	 * @param ctx the parse tree
 	 */
@@ -347,6 +367,66 @@ public interface JavaGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFieldDeclaratorId(JavaGrammarParser.FieldDeclaratorIdContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceDeclaration(JavaGrammarParser.InterfaceDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceDeclaration(JavaGrammarParser.InterfaceDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceModifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceModifier(JavaGrammarParser.InterfaceModifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceModifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceModifier(JavaGrammarParser.InterfaceModifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceBody(JavaGrammarParser.InterfaceBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceBody(JavaGrammarParser.InterfaceBodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceMemberDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceMemberDeclaration(JavaGrammarParser.InterfaceMemberDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceMemberDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceMemberDeclaration(JavaGrammarParser.InterfaceMemberDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceMethodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceMethodDeclaration(JavaGrammarParser.InterfaceMethodDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceMethodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceMethodDeclaration(JavaGrammarParser.InterfaceMethodDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaGrammarParser#interfaceMethodModifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceMethodModifier(JavaGrammarParser.InterfaceMethodModifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaGrammarParser#interfaceMethodModifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceMethodModifier(JavaGrammarParser.InterfaceMethodModifierContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaGrammarParser#methodDeclaration}.
 	 * @param ctx the parse tree

@@ -1,0 +1,5 @@
+package translator.utility;
+
+public interface SecondClassInterface{
+  String method1();
+}

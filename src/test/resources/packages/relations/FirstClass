@@ -1,0 +1,9 @@
+package translator;
+
+import translator.utility.SecondClass;
+import translator.test.ThirdClass;
+import java.util.List;
+
+public abstract class FirstClass {
+  SecondClass method1(){}
+}

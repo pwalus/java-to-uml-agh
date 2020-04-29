@@ -1,0 +1,7 @@
+package translator.utility;
+
+import translator.utility.test.ThirdClass;
+
+public abstract class SecondClass extends ThirdClass{
+  String method1(){}
+}

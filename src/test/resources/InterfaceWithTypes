@@ -1,0 +1,39 @@
+public class InterfaceWithTypes {
+  void method(){}
+
+  boolean method(){}
+
+  byte method(){}
+
+  short method(){}
+
+  int method(){}
+
+  long method(){}
+
+  char method(){}
+
+  float method(){}
+
+  double method(){}
+
+  String method(){}
+
+  Integer method(){}
+
+  Number method(){}
+
+  Char method(){}
+
+  CustomType method(){}
+
+  CustomInterface method(){}
+
+  List<String> method(){}
+
+  Set<Integer> method(){}
+
+  Set<?> method(){}
+
+  Map<String,Integer> method(){}
+}

@@ -1,0 +1,10 @@
+package translator;
+
+import translator.utility.test.FourthClass;
+import translator.utility.SecondClass;
+import translator.test.ThirdClass;
+import java.util.List;
+
+public class FirstClass extends SecondClass{
+  String method1(){}
+}
