@@ -17,138 +17,138 @@ class JavaToUmlTranslatorTest {
 
     @Test
     void ClassWithoutMethods() throws IOException {
-        test("ClassWithoutMethods", "ClassWithoutMethods.uml");
+        test("ClassWithoutMethods.java.txt", "ClassWithoutMethods.uml.txt");
     }
 
     @Test
     void InterfaceWithoutMethods() throws IOException {
-        test("InterfaceWithoutMethods", "InterfaceWithoutMethods.uml");
+        test("InterfaceWithoutMethods.java.txt", "InterfaceWithoutMethods.uml.txt");
     }
 
     @Test
     void ClassWithMethods() throws IOException {
-        test("ClassWithMethods", "ClassWithMethods.uml");
+        test("ClassWithMethods.java.txt", "ClassWithMethods.uml.txt");
     }
 
     @Test
     void InterfaceWithMethods() throws IOException {
-        test("InterfaceWithMethods", "InterfaceWithMethods.uml");
+        test("InterfaceWithMethods.java.txt", "InterfaceWithMethods.uml.txt");
     }
 
     @Test
     void ClassWithPrimitives() throws IOException {
-        test("ClassWithPrimitives", "ClassWithPrimitives.uml");
+        test("ClassWithPrimitives.java.txt", "ClassWithPrimitives.uml.txt");
     }
 
     @Test
     void ClassWithReferencesTypes() throws IOException {
-        test("ClassWithReferencesTypes", "ClassWithReferencesTypes.uml");
+        test("ClassWithReferencesTypes.java.txt", "ClassWithReferencesTypes.uml.txt");
     }
 
     @Test
     void ClassWithGenerics() throws IOException {
-        test("ClassWithGenerics", "ClassWithGenerics.uml");
+        test("ClassWithGenerics.java.txt", "ClassWithGenerics.uml.txt");
     }
 
     @Test
     void ClassWithArrays() throws IOException {
-        test("ClassWithArrays", "ClassWithArrays.uml");
+        test("ClassWithArrays.java.txt", "ClassWithArrays.uml.txt");
     }
 
     @Test
     void ClassWithMethodParameters() throws IOException {
-        test("ClassWithMethodParameters", "ClassWithMethodParameters.uml");
+        test("ClassWithMethodParameters.java.txt", "ClassWithMethodParameters.uml.txt");
     }
 
     @Test
     void ClassWithFields() throws IOException {
-        test("ClassWithFields", "ClassWithFields.uml");
+        test("ClassWithFields.java.txt", "ClassWithFields.uml.txt");
     }
 
     @Test
     void InterfaceWithMethodParameters() throws IOException {
-        test("InterfaceWithMethodParameters", "InterfaceWithMethodParameters.uml");
+        test("InterfaceWithMethodParameters.java.txt", "InterfaceWithMethodParameters.uml.txt");
     }
 
     @Test
     void InterfaceWithTypes() throws IOException {
-        test("InterfaceWithTypes", "InterfaceWithTypes.uml");
+        test("InterfaceWithTypes.java.txt", "InterfaceWithTypes.uml.txt");
     }
 
     @Test
     void AbstractModifier() throws IOException {
-        test("AbstractModifier", "AbstractModifier.uml");
+        test("AbstractModifier.java.txt", "AbstractModifier.uml.txt");
     }
 
     @Test
     void StaticModifier() throws IOException {
-        test("StaticModifier", "StaticModifier.uml");
+        test("StaticModifier.java.txt", "StaticModifier.uml.txt");
     }
 
     @Test
     void AnythingInMethodBody() throws IOException {
-        test("AnythingInMethodBody", "AnythingInMethodBody.uml");
+        test("AnythingInMethodBody.java.txt", "AnythingInMethodBody.uml.txt");
     }
 
     @Test
     void Packages() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/onepackage/FirstClass");
-        files.add("packages/onepackage/SecondClass");
+        files.add("packages/onepackage/FirstClass.java.txt");
+        files.add("packages/onepackage/SecondClass.java.txt");
 
-        test(files, "packages/onepackage/Result.uml");
+        test(files, "packages/onepackage/Result.uml.txt");
     }
 
     @Test
     void TwoPackages() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/twopackages/FirstClass");
-        files.add("packages/twopackages/SecondClass");
-        files.add("packages/twopackages/ThirdClass");
+        files.add("packages/twopackages/FirstClass.java.txt");
+        files.add("packages/twopackages/SecondClass.java.txt");
+        files.add("packages/twopackages/ThirdClass.java.txt");
 
-        test(files, "packages/twopackages/Result.uml");
+        test(files, "packages/twopackages/Result.uml.txt");
     }
 
     @Test
     void Relations() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/relations/FirstClass");
-        files.add("packages/relations/SecondClass");
+        files.add("packages/relations/FirstClass.java.txt");
+        files.add("packages/relations/SecondClass.java.txt");
 
-        test(files, "packages/relations/Result.uml");
+        test(files, "packages/relations/Result.uml.txt");
     }
 
     @Test
     void Extensions() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/extensions/FirstClass");
-        files.add("packages/extensions/SecondClass");
-        files.add("packages/extensions/ThirdClass");
-        files.add("packages/extensions/FourthClass");
+        files.add("packages/extensions/FirstClass.java.txt");
+        files.add("packages/extensions/SecondClass.java.txt");
+        files.add("packages/extensions/ThirdClass.java.txt");
+        files.add("packages/extensions/FourthClass.java.txt");
 
-        test(files, "packages/extensions/Result.uml");
+        test(files, "packages/extensions/Result.uml.txt");
     }
 
     @Test
     void GenericClasses() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/genericClasses/FirstClass");
-        files.add("packages/genericClasses/SecondClass");
-        files.add("packages/genericClasses/ThirdClass");
-        files.add("packages/genericClasses/FourthClass");
+        files.add("packages/genericClasses/FirstClass.java.txt");
+        files.add("packages/genericClasses/SecondClass.java.txt");
+        files.add("packages/genericClasses/ThirdClass.java.txt");
+        files.add("packages/genericClasses/FourthClass.java.txt");
 
-        test(files, "packages/genericClasses/Result.uml");
+        test(files, "packages/genericClasses/Result.uml.txt");
     }
 
     @Test
     void ImplementsClasses() throws IOException {
         List<String> files = new ArrayList<>();
-        files.add("packages/implementsClasses/FirstClass");
-        files.add("packages/implementsClasses/SecondClassInterface");
-        files.add("packages/implementsClasses/ThirdClass");
-        files.add("packages/implementsClasses/FourthClassInterface");
+        files.add("packages/implementsClasses/FirstClass.java.txt");
+        files.add("packages/implementsClasses/SecondClassInterface.java.txt");
+        files.add("packages/implementsClasses/ThirdClass.java.txt");
+        files.add("packages/implementsClasses/FourthClassInterface.java.txt");
 
-        test(files, "packages/implementsClasses/Result.uml");
+        test(files, "packages/implementsClasses/Result.uml.txt");
     }
 
     private void test(String classFile, String expectedUml) throws IOException {
