@@ -9,3 +9,5 @@ gradle run  --args='/Users/patrykwalus/IdeaProjects/semestr8/kompil/java-to-uml/
 ```
 
 Inside repositorium is ready demo project **testpackage**
+
+Application print diagram in plantuml format. To generate visual diagram we recommend https://www.planttext.com
