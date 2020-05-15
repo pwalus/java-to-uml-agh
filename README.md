@@ -1,6 +1,9 @@
 # java-to-uml-agh
 
-## Zespół:
+## Spis treści
+
+
+## Zespół
 - Patryk Waluś
 - Konrad Mikucki
 
@@ -28,11 +31,16 @@ Język Java jest językiem:
 - Pojawił się problem ze zdefiniowaniem reguły dla bloku metody, która może zawierać z punktu widzenia gramatyki obojętnie jaki kod (Tylko w przypadku diagramów UML, gdzie ważniejsze są relacje między klasami). Konieczne było zaznajomienie się z rekurencyjną regułą. Pomogły tutaj materiały na stackoverflow.
 - Zbyt duże skomplikowanie gramatyki. Podczas prac implementacyjnych, musieliśmy zrezygnować lub uprościć niektóre reguły, ponieważ okazało się dla nas zbyt trudne zaimplementowanie tłumaczenie kodu względem takiej gramatyki.
 - Zdecydowanie się na przechodzenie po drzewie przy użyciu wzorca **Listener** lub **Visitor**. Aby wybrać dobrą ściężkę, postanowiliśmy przetestować zarówno jeden jak i drugi wzorzec. Próbowaliśmy implementacji dla obu podejść, jednak w naszym przypadku łatwiejsze było użycie wzorca **Listener**, ponieważ przechodzi on automatycznie po całym drzewie(nie trzeba kontrolować przepływu danych między węzłami), metody nie zwracają danych (parametry metod zależą od kontekstu, a nie od poprzedniej wartości. Jest to bardziej przydatne w przypadku tworzenia interpretera)
-
-
  
 ## Opis działań
 Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
+
+## Linkografia
+- https://www.antlr.org - Strona główna ANTLR
+- https://github.com/antlr/antlr4/blob/master/doc/index.md - Oficjalna dokumentacja ANTLR
+- https://docs.oracle.com/javase/specs/jls/se8/html/ - Specyfikacja języka Java w wersji 8
+- https://github.com/antlr/grammars-v4 - Repozytorium gramatyk narzędzia ANTLR
+- https://stackoverflow.com - Wybrane pytania, dotyczące napotkanych problemów
 
 
 ## Sposób uruchomienia
@@ -51,7 +59,6 @@ Przykład:
 ```
 
 Powyższe polecenie wyświetla przetłumaczony kod, który następnie można zwizualizować w narzędziu https://www.planttext.com
-
 
 Przetłumaczony kod Java z folderu **testpackage**:
 ```
