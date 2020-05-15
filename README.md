@@ -1,11 +1,17 @@
 # java-to-uml-agh
 
-## Spis treści
-
-
 ## Zespół
 - Patryk Waluś
 - Konrad Mikucki
+
+## Spis treści
+- [Wstęp](https://github.com/pwalus/java-to-uml-agh#wstęp)
+- [Opis systemu typizacji języka Java w wersji 8](https://github.com/pwalus/java-to-uml-agh#opis-systemu-typizacji-języka-java-w-wersji-8)
+- [Uzasadnienie wyboru generatora parserów ANTLRv4](https://github.com/pwalus/java-to-uml-agh#uzasadnienie-wyboru-generatora-parserów-antlrv4)
+- [Opis napotkanych problemów oraz sposób ich rozwiązania](https://github.com/pwalus/java-to-uml-agh#opis-napotkanych-problemów-oraz-sposób-ich-rozwiązania)
+- [Opis działań](https://github.com/pwalus/java-to-uml-agh#opis-działań)
+- [Sposób uruchomienia](https://github.com/pwalus/java-to-uml-agh#sposób-uruchomienia)
+- [Linkografia](https://github.com/pwalus/java-to-uml-agh#linkografia)
 
 ## Wstęp
 Program służący do zamiany kodu Java do opisowego języka PlantUML, który można przekształcić następnie do postaci wizualnej na przykład za pomocą narzędzia https://www.planttext.com
@@ -34,14 +40,6 @@ Język Java jest językiem:
  
 ## Opis działań
 Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
-
-## Linkografia
-- https://www.antlr.org - Strona główna ANTLR
-- https://github.com/antlr/antlr4/blob/master/doc/index.md - Oficjalna dokumentacja ANTLR
-- https://docs.oracle.com/javase/specs/jls/se8/html/ - Specyfikacja języka Java w wersji 8
-- https://github.com/antlr/grammars-v4 - Repozytorium gramatyk narzędzia ANTLR
-- https://stackoverflow.com - Wybrane pytania, dotyczące napotkanych problemów
-
 
 ## Sposób uruchomienia
 Dla celów demonstracyjnych przygotowaliśmy testowy package o nazwie **testpackage**, który znajduje się w **src/main/java/testpackage**. Staraliśmy się dodać do niego wszystkie obsłużone przez nas przypadki.
@@ -135,3 +133,10 @@ testpackage.abstraction.Person <|-- testpackage.university.people.Student
 testpackage.abstraction.PersistInterface .. testpackage.abstraction.Person
 @enduml
 ```
+
+## Linkografia
+- https://www.antlr.org - Strona główna ANTLR
+- https://github.com/antlr/antlr4/blob/master/doc/index.md - Oficjalna dokumentacja ANTLR
+- https://docs.oracle.com/javase/specs/jls/se8/html/ - Specyfikacja języka Java w wersji 8
+- https://github.com/antlr/grammars-v4 - Repozytorium gramatyk narzędzia ANTLR
+- https://stackoverflow.com - Wybrane pytania, dotyczące napotkanych problemów
