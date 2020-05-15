@@ -19,8 +19,17 @@ Język Java jest językiem:
  - od Javy w wersji 5 można korzystać z typów generycznych, które pozwalają na parametryzowanie klas oraz interfejsów, dzięki czemu klasy oraz metody mogą operować na obiektach różnych typów przy czym w dalszym ciągu zapewnia bezpieczeństwo typu kompilacji.
  
 ## Uzasadnienie wyboru generatora parserów ANTLRv4
-Narzędzie ANTLRv4 zostało przedstawione na zajęciach jako odpowiedni wybór przy 
- 
+- Narzędzie ANTLRv4 zostało przedstawione na zajęciach jako odpowiedni generatorów parserów dla języka Java.
+- W internecie znajduje się wiele poradników oraz przykładowych repozytoriów, które pomogły nam zrozumieć w jaki sposób możemy zacząć tworzyć projekt. Po zaznajomieniu się z informacjami w internecie oraz samym narzędziem ANTLRv4 stwierdziliśmy, że wykonamy projekt przy użyciu właśnie ANTLRv4.
+- Dodatkowym atutem jest plugin dla IntelliJ IDEA, który pozwala w łatwy sposób korzystać z ANTLRv4, posiada narzędzia do debugowania gramatyki oraz wyświetlania drzewa dla przykładowego kodu.
+
+## Opis napotkanych problemów oraz sposób ich rozwiązania
+- Jednym z pierwszych napotkanych problemów było zrozumienie jak napisać własną gramatykę. Pomocne w tym przypadku okazały się: materiały dostępne na stronie ANTLRv4, poradniki oraz przykładowe repozytoria.
+- Pojawił się problem ze zdefiniowaniem reguły dla bloku metody, która może zawierać z punktu widzenia gramatyki obojętnie jaki kod (Tylko w przypadku diagramów UML, gdzie ważniejsze są relacje między klasami). Konieczne było zaznajomienie się z rekurencyjną regułą. Pomogły tutaj materiały na stackoverflow.
+- Zbyt duże skomplikowanie gramatyki. Podczas prac implementacyjnych, musieliśmy zrezygnować lub uprościć niektóre reguły, ponieważ okazało się dla nas zbyt trudne zaimplementowanie tłumaczenie kodu względem takiej gramatyki.
+- Zdecydowanie się na przechodzenie po drzewie przy użyciu wzorca **Listener** lub **Visitor**. Aby wybrać dobrą ściężkę, postanowiliśmy przetestować zarówno jeden jak i drugi wzorzec. Próbowaliśmy implementacji dla obu podejść, jednak w naszym przypadku łatwiejsze było użycie wzorca **Listener**, ponieważ przechodzi on automatycznie po całym drzewie(nie trzeba kontrolować przepływu danych między węzłami), metody nie zwracają danych (parametry metod zależą od kontekstu, a nie od poprzedniej wartości. Jest to bardziej przydatne w przypadku tworzenia interpretera)
+
+
  
 ## Opis działań
 Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
