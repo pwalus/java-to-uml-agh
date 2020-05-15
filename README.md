@@ -10,6 +10,7 @@
 - [Uzasadnienie wyboru generatora parserów ANTLRv4](https://github.com/pwalus/java-to-uml-agh#uzasadnienie-wyboru-generatora-parserów-antlrv4)
 - [Opis napotkanych problemów oraz sposób ich rozwiązania](https://github.com/pwalus/java-to-uml-agh#opis-napotkanych-problemów-oraz-sposób-ich-rozwiązania)
 - [Opis działań](https://github.com/pwalus/java-to-uml-agh#opis-działań)
+- [Specyfikacja gramatyki języka Java w notacji narzędzia ANTLRv4](https://github.com/pwalus/java-to-uml-agh#specyfikacja-gramatyki-języka-java-w-notacji-narzędzia-antlrv4)
 - [Sposób uruchomienia](https://github.com/pwalus/java-to-uml-agh#sposób-uruchomienia)
 - [Linkografia](https://github.com/pwalus/java-to-uml-agh#linkografia)
 
@@ -40,6 +41,347 @@ Język Java jest językiem:
  
 ## Opis działań
 Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
+
+## Specyfikacja gramatyki języka Java w notacji narzędzia ANTLRv4
+Gramatyka znajduje się w projekcie pod linkiem [JavaGrammar.g4](https://github.com/pwalus/java-to-uml-agh/blob/master/src/main/java/grammar/JavaGrammar.g4). Została ona stworzona na podstawie specyfikacji języka Java. 
+
+- Nazwa gramatyki:
+
+```
+grammar JavaGrammar;
+```
+
+- Główna reguła:
+
+```
+compilationUnit
+  : packageDeclaration? importDeclaration* typeDeclaration* EOF
+  ;
+```
+
+- Reguły deklaracji package oraz importów
+
+```
+packageDeclaration
+  : (WS|NEWLINE).*?
+  | 'package' packageName ';'
+  ;
+
+packageName
+ : Identifier
+ | packageName '.' Identifier
+ ;
+
+importDeclaration
+ : singleTypeImportDeclaration
+ | singleStaticImportDeclaration
+ | (WS|NEWLINE).*?
+ ;
+
+singleTypeImportDeclaration
+ : 'import' typeName ';'
+ ;
+
+singleStaticImportDeclaration
+ : 'import' 'static' typeName '.' Identifier ';'
+ ;
+```
+
+- Reguły dla typów oraz zmiennych
+
+```
+typeDeclaration
+ : classDeclaration
+ | interfaceDeclaration
+ ;
+
+primitiveType
+ : numericType
+ | 'boolean'
+ ;
+
+numericType
+ : integralType
+ | floatingPointType
+ ;
+
+integralType
+ : 'byte'
+ | 'short'
+ | 'int'
+ | 'long'
+ | 'char'
+ ;
+
+floatingPointType
+ : 'float'
+ | 'double'
+ ;
+
+referenceType
+ : classOrInterfaceType
+ | arrayType
+ ;
+
+classOrInterfaceType
+ : Identifier typeArguments?
+ ;
+
+typeVariable
+ : Identifier
+ ;
+
+arrayType
+ : primitiveType dims
+ | classOrInterfaceType dims
+ | typeVariable dims
+ ;
+
+dims
+ : '[' ']' ('[' ']')*
+ ;
+
+typeParameter
+ : Identifier typeBound?
+ ;
+
+typeBound
+ : 'extends' typeVariable
+ | 'extends' classOrInterfaceType
+ ;
+
+typeArguments
+ : '<' typeArgumentList '>'
+ ;
+
+typeArgumentList
+ : typeArgument (',' typeArgument)*
+ ;
+
+typeArgument
+ : referenceType
+ | wildcard
+ ;
+
+wildcard
+ : '?'
+ ;
+```
+
+- Reguły dla klas
+
+```
+classDeclaration
+  : classModifier* 'class' Identifier typeArguments? superClass? superInterfaces? classBody
+  ;
+
+superClass
+ : 'extends' classOrInterfaceType
+ ;
+
+superInterfaces
+ : 'implements' interfaceTypeList
+ ;
+
+interfaceTypeList
+ : classOrInterfaceType (',' classOrInterfaceType)*
+ ;
+
+classModifier
+  : accessModifier
+  | 'abstract'
+  | 'static'
+  | 'final'
+  ;
+
+classBody
+  : '{}'
+  | '{' (WS|NEWLINE).*? '}'
+  | '{' classBodyDeclaration* '}'
+  ;
+
+classBodyDeclaration
+  : classMemberDeclaration
+  ;
+
+classMemberDeclaration
+  : (WS|NEWLINE).*?
+  | fieldDeclaration
+  | methodDeclaration
+  ;
+
+fieldDeclaration
+  : fieldModifier* fieldHeader ';'
+  ;
+
+fieldModifier
+  : 'public'
+  | 'protected'
+  | 'private'
+  | 'static'
+  ;
+
+fieldHeader
+  : unannType fieldDeclaratorId
+  ;
+
+fieldDeclaratorId
+  : Identifier
+  ;
+```
+
+- Reguły dla interfejsów
+
+```
+interfaceDeclaration
+  : interfaceModifier* 'interface' Identifier typeArguments? interfaceBody
+  ;
+
+interfaceModifier
+  : 'public'
+  | 'abstract'
+  | 'static'
+  ;
+
+interfaceBody
+  : '{}'
+  | '{' (WS|NEWLINE).*? '}'
+  | '{' interfaceMemberDeclaration* '}'
+  ;
+
+interfaceMemberDeclaration
+  : (WS|NEWLINE).*?
+  | interfaceMethodDeclaration
+  ;
+
+interfaceMethodDeclaration
+  : interfaceMethodModifier* methodHeader methodBody
+  ;
+
+interfaceMethodModifier
+ : 'public'
+ | 'abstract'
+ | 'static'
+ ;
+```
+
+- Reguły dla metod
+
+```
+methodDeclaration
+  : methodModifier* methodHeader methodBody
+  ;
+
+methodModifier
+ : accessModifier
+ | 'abstract'
+ | 'static'
+ | 'final'
+ ;
+
+methodHeader
+  : result methodDeclarator
+  ;
+
+methodDeclarator
+  : Identifier '(' parameterList? ')'
+  ;
+
+parameterList
+  : formalParameter (',' formalParameter)*
+  ;
+
+formalParameter
+  : unannType variableDeclaratorId
+  ;
+
+variableDeclaratorId
+  : Identifier
+  ;
+
+methodBody
+  : block
+  | ';'
+  ;
+
+result
+  : unannType
+  | 'void'
+  ;
+
+accessModifier
+  : 'public'
+  | 'protected'
+  | 'private'
+  ;
+```
+
+- Reguły dla bloków
+
+```
+block
+  : '{}'
+  | '{' ( ~('{' | '}') | block)* '}'
+  ;
+```
+
+- Reguły lexera
+
+```
+Identifier
+ : Letter (Letter|JavaLetterOrDigit)*
+ ;
+
+fragment
+Letter
+  : '\u0024'
+  | '\u0041'..'\u005a'
+  | '\u005f'
+  | '\u0061'..'\u007a'
+  | '\u00c0'..'\u00d6'
+  | '\u00d8'..'\u00f6'
+  | '\u00f8'..'\u00ff'
+  | '\u0100'..'\u1fff'
+  | '\u3040'..'\u318f'
+  | '\u3300'..'\u337f'
+  | '\u3400'..'\u3d2d'
+  | '\u4e00'..'\u9fff'
+  | '\uf900'..'\ufaff'
+  ;
+
+fragment
+JavaLetterOrDigit
+  : '\u0030'..'\u0039'
+  | '\u0660'..'\u0669'
+  | '\u06f0'..'\u06f9'
+  | '\u0966'..'\u096f'
+  | '\u09e6'..'\u09ef'
+  | '\u0a66'..'\u0a6f'
+  | '\u0ae6'..'\u0aef'
+  | '\u0b66'..'\u0b6f'
+  | '\u0be7'..'\u0bef'
+  | '\u0c66'..'\u0c6f'
+  | '\u0ce6'..'\u0cef'
+  | '\u0d66'..'\u0d6f'
+  | '\u0e50'..'\u0e59'
+  | '\u0ed0'..'\u0ed9'
+  | '\u1040'..'\u1049'
+  ;
+
+NEWLINE
+  :'\r'? '\n'
+  ;
+
+WS
+  : [ \r\t\u000C\n]+ -> channel(HIDDEN)
+  ;
+
+ErrorCharacter
+  : . -> channel(HIDDEN)
+  ;
+```
+
+
 
 ## Sposób uruchomienia
 Dla celów demonstracyjnych przygotowaliśmy testowy package o nazwie **testpackage**, który znajduje się w **src/main/java/testpackage**. Staraliśmy się dodać do niego wszystkie obsłużone przez nas przypadki.
