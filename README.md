@@ -1,13 +1,32 @@
 # java-to-uml-agh
 
-Zespół:
+## Zespół:
 - Patryk Waluś
 - Konrad Mikucki
 
+## Wstęp
 Program służący do zamiany kodu Java do opisowego języka PlantUML, który można przekształcić następnie do postaci wizualnej na przykład za pomocą narzędzia https://www.planttext.com
 
+## Opis systemu typizacji języka Java w wersji 8
+
+Język Java jest językiem:
+ - opartym na paradygmacie obiektowym
+ - kompilowanym
+ - z silnym, statycznym typowaniem
+ - którego kod jest kompilowany do kodu bajtowego, czyli postaci zrozumiałej dla maszyny wirtualnej Javy
+ - niezależnym od systemy operacyjnego i procesora
+ - każda klasa dziedziczy po klasie Object, przez co istnieje sposób, aby niezależnie od typu przypisać wartość do zmiennej typu Object
+ - od Javy w wersji 5 można korzystać z typów generycznych, które pozwalają na parametryzowanie klas oraz interfejsów, dzięki czemu klasy oraz metody mogą operować na obiektach różnych typów przy czym w dalszym ciągu zapewnia bezpieczeństwo typu kompilacji.
+ 
+## Uzasadnienie wyboru generatora parserów ANTLRv4
+Narzędzie ANTLRv4 zostało przedstawione na zajęciach jako odpowiedni wybór przy 
+ 
+ 
+## Opis działań
 Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
 
+
+## Sposób uruchomienia
 Dla celów demonstracyjnych przygotowaliśmy testowy package o nazwie **testpackage**, który znajduje się w **src/main/java/testpackage**. Staraliśmy się dodać do niego wszystkie obsłużone przez nas przypadki.
 
 Aby uruchomić program należy w konsoli wykonać polecenie, gdzie jako argument podajemy absolutną ścieżkę do folderu, w którym znajduje się Java do przetłumaczenia na diagramy UML.
