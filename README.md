@@ -9,13 +9,14 @@
 - [Opis systemu typizacji języka Java w wersji 8](https://github.com/pwalus/java-to-uml-agh#opis-systemu-typizacji-języka-java-w-wersji-8)
 - [Uzasadnienie wyboru generatora parserów ANTLRv4](https://github.com/pwalus/java-to-uml-agh#uzasadnienie-wyboru-generatora-parserów-antlrv4)
 - [Opis napotkanych problemów oraz sposób ich rozwiązania](https://github.com/pwalus/java-to-uml-agh#opis-napotkanych-problemów-oraz-sposób-ich-rozwiązania)
-- [Opis działań](https://github.com/pwalus/java-to-uml-agh#opis-działań)
 - [Specyfikacja gramatyki języka Java w notacji narzędzia ANTLRv4](https://github.com/pwalus/java-to-uml-agh#specyfikacja-gramatyki-języka-java-w-notacji-narzędzia-antlrv4)
 - [Sposób uruchomienia](https://github.com/pwalus/java-to-uml-agh#sposób-uruchomienia)
 - [Linkografia](https://github.com/pwalus/java-to-uml-agh#linkografia)
 
 ## Wstęp
-Program służący do zamiany kodu Java do opisowego języka PlantUML, który można przekształcić następnie do postaci wizualnej na przykład za pomocą narzędzia https://www.planttext.com
+Program służący do zamiany kodu Java do opisowego języka PlantUML, który można przekształcić następnie do postaci wizualnej na przykład za pomocą narzędzia https://www.planttext.com.
+
+Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
 
 ## Opis systemu typizacji języka Java w wersji 8
 
@@ -38,9 +39,6 @@ Język Java jest językiem:
 - Pojawił się problem ze zdefiniowaniem reguły dla bloku metody, która może zawierać z punktu widzenia gramatyki obojętnie jaki kod (Tylko w przypadku diagramów UML, gdzie ważniejsze są relacje między klasami). Konieczne było zaznajomienie się z rekurencyjną regułą. Pomogły tutaj materiały na stackoverflow.
 - Zbyt duże skomplikowanie gramatyki. Podczas prac implementacyjnych, musieliśmy zrezygnować lub uprościć niektóre reguły, ponieważ okazało się dla nas zbyt trudne zaimplementowanie tłumaczenie kodu względem takiej gramatyki.
 - Zdecydowanie się na przechodzenie po drzewie przy użyciu wzorca **Listener** lub **Visitor**. Aby wybrać dobrą ściężkę, postanowiliśmy przetestować zarówno jeden jak i drugi wzorzec. Próbowaliśmy implementacji dla obu podejść, jednak w naszym przypadku łatwiejsze było użycie wzorca **Listener**, ponieważ przechodzi on automatycznie po całym drzewie(nie trzeba kontrolować przepływu danych między węzłami), metody nie zwracają danych (parametry metod zależą od kontekstu, a nie od poprzedniej wartości. Jest to bardziej przydatne w przypadku tworzenia interpretera)
- 
-## Opis działań
-Na cele projektu została przygotowana gramatyka dla języka Java w wersji 8 opierając się na specyfikacji języka. Do tego celu wykorzystaliśmy narzędzie ANTLR, które pozwala na generowanie parserów na podstawie przygotowanej gramatyki. Poprawność gramatyki testowaliśmy przy pomocy pluginu ANTLR v4 grammar plugin instalowanego w Intellij IDEA oraz przygotowanych testowych plików \*.java. Następnie dodawaliśmy nowe funkcjonalności przetwarzania sparsowanego drzewa, dla których odrazu były przygotowywane testy. 
 
 ## Specyfikacja gramatyki języka Java w notacji narzędzia ANTLRv4
 Gramatyka znajduje się w projekcie pod linkiem [JavaGrammar.g4](https://github.com/pwalus/java-to-uml-agh/blob/master/src/main/java/grammar/JavaGrammar.g4). Została ona stworzona na podstawie specyfikacji języka Java. 
