@@ -24,9 +24,9 @@ Język Java jest językiem:
  - kompilowanym
  - z silnym, statycznym typowaniem
  - którego kod jest kompilowany do kodu bajtowego, czyli postaci zrozumiałej dla maszyny wirtualnej Javy
- - niezależnym od systemy operacyjnego i procesora
+ - niezależnym od systemu operacyjnego i procesora
  - każda klasa dziedziczy po klasie Object, przez co istnieje sposób, aby niezależnie od typu przypisać wartość do zmiennej typu Object
- - od Javy w wersji 5 można korzystać z typów generycznych, które pozwalają na parametryzowanie klas oraz interfejsów, dzięki czemu klasy oraz metody mogą operować na obiektach różnych typów przy czym w dalszym ciągu zapewnia bezpieczeństwo typu kompilacji.
+ - od Javy w wersji 5 można korzystać z typów generycznych, które pozwalają na parametryzowanie klas oraz interfejsów, dzięki czemu klasy oraz metody mogą operować na obiektach różnych typów przy czym w dalszym ciągu zapewnia bezpieczeństwo typu podczas kompilacji.
  
 ## Uzasadnienie wyboru generatora parserów ANTLRv4
 - Narzędzie ANTLRv4 zostało przedstawione na zajęciach jako odpowiedni generatorów parserów dla języka Java.
@@ -34,7 +34,7 @@ Język Java jest językiem:
 - Dodatkowym atutem jest plugin dla IntelliJ IDEA, który pozwala w łatwy sposób korzystać z ANTLRv4, posiada narzędzia do debugowania gramatyki oraz wyświetlania drzewa dla przykładowego kodu.
 
 ## Opis napotkanych problemów oraz sposób ich rozwiązania
-- Jednym z pierwszych napotkanych problemów było zrozumienie jak napisać własną gramatykę. Pomocne w tym przypadku okazały się: materiały dostępne na stronie ANTLRv4, poradniki oraz przykładowe repozytoria.
+- Jednym z pierwszych napotkanych problemów było zrozumienie jak napisać własną gramatykę. Pomocne w tym przypadku okazały się materiały dostępne na stronie ANTLRv4, poradniki oraz przykładowe repozytoria.
 - Pojawił się problem ze zdefiniowaniem reguły dla bloku metody, która może zawierać z punktu widzenia gramatyki obojętnie jaki kod (Tylko w przypadku diagramów UML, gdzie ważniejsze są relacje między klasami). Konieczne było zaznajomienie się z rekurencyjną regułą. Pomogły tutaj materiały na stackoverflow.
 - Zbyt duże skomplikowanie gramatyki. Podczas prac implementacyjnych, musieliśmy zrezygnować lub uprościć niektóre reguły, ponieważ okazało się dla nas zbyt trudne zaimplementowanie tłumaczenie kodu względem takiej gramatyki.
 - Zdecydowanie się na przechodzenie po drzewie przy użyciu wzorca **Listener** lub **Visitor**. Aby wybrać dobrą ściężkę, postanowiliśmy przetestować zarówno jeden jak i drugi wzorzec. Próbowaliśmy implementacji dla obu podejść, jednak w naszym przypadku łatwiejsze było użycie wzorca **Listener**, ponieważ przechodzi on automatycznie po całym drzewie(nie trzeba kontrolować przepływu danych między węzłami), metody nie zwracają danych (parametry metod zależą od kontekstu, a nie od poprzedniej wartości. Jest to bardziej przydatne w przypadku tworzenia interpretera)
